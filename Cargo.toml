@@ -17,4 +17,5 @@ exclude = [
     #"examples/holy_grail_app",
     "examples/button_app",
     "examples/text_app",
+    "examples/page_app",
 ]

@@ -1,6 +1,6 @@
 use std::collections::HashSet;
 use super::{TextTag, TextMsg};
-use duid::html::attributes::{Attribute, AttributeValue};
+use duid::html::attributes::Attribute;
 
 /// Text Model
 #[derive(Debug, PartialEq, Clone)]

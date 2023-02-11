@@ -1,8 +1,8 @@
 use super::{ButtonMsg, ButtonModel, ButtonKind, ButtonIcon, ButtonState, ButtonColor, ButtonSize, ButtonVariation};
 use duid::{
         html::{
-            button, span, text, a,
-            attributes::{style, classes, selectors, Attribute, AttributeValue, Value, disabled, empty_attr},
+            button, span, a,
+            attributes::{classes, selectors, Attribute, AttributeValue, Value, disabled, empty_attr},
             nodes::Node
         },
         events,
