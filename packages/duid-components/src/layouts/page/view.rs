@@ -2,7 +2,7 @@ use super::{PageModel, PageMsg, PageElement};
 use std::collections::HashSet;
 use duid::{
         html::{
-            div,
+            div, header, main, footer,
             attributes::{classes, selectors},
             nodes::Node
         },
@@ -131,7 +131,7 @@ fn build_child<M>(
 where 
     M: Clone + 'static
 {
-    let (child_height_classes, child_height_selectors) = render_heights(&header_height, &footer_height, elm);
+    let (child_height_classes, child_height_selectors) = render_heights(&header_height, &footer_height, &elm);
     let mut classes_vec: Vec<_> = child_classes.iter().collect();
     let mut selectors_vec: Vec<_> = child_selectors.iter().collect();
     classes_vec.push(&child_height_classes);
@@ -140,13 +140,29 @@ where
 
     let attrs = vec![classes(&classes_vec), selectors(&selectors_vec)];
 
-    div(
-        &attrs,
-        &[child]
-    )
+    match elm {
+        PageElement::Header => {
+            header(
+                &attrs,
+                &[child]
+            )
+        },
+        PageElement::Body => {
+            main(
+                &attrs,
+                &[child]
+            )
+        },
+        PageElement::Footer => {
+            footer(
+                &attrs,
+                &[child]
+            )
+        }
+    }
 }
 
-fn render_heights(header_height: &str, footer_height: &str, elm: PageElement) -> (String, String) {
+fn render_heights(header_height: &str, footer_height: &str, elm: &PageElement) -> (String, String) {
     match elm {
         PageElement::Header => {
             let header_height_selector = format!(".duid-ph-height-{}:::vh-90[{}]", header_height.replace(".", ""), header_height);
@@ -154,7 +170,7 @@ fn render_heights(header_height: &str, footer_height: &str, elm: PageElement) ->
             (header_height_classe, header_height_selector)
         },
         PageElement::Body => {
-            let body_height_selector = format!(".duid-pb-height-{}-{}:::vh-90[calc(99.5vh&-&{}&-&{})]", header_height.replace(".", ""), footer_height.replace(".", ""), header_height, footer_height);
+            let body_height_selector = format!(".duid-pb-height-{}-{}:::vh-90[calc(99.6vh&-&{}&-&{})]", header_height.replace(".", ""), footer_height.replace(".", ""), header_height, footer_height);
             let body_height_classe = format!("duid-pb-height-{}-{}", header_height.replace(".", ""), footer_height.replace(".", ""));
             (body_height_classe, body_height_selector)
         },

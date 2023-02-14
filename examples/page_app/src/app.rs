@@ -44,7 +44,7 @@ impl AppModel {
         let mut classes = Vec::with_capacity(0);
         let mut selectors = Vec::with_capacity(0);
         selectors.push(".duid-page:::border border-solid border-neutral-400".to_owned());
-        selectors.push(".duid-page > div:::border border-solid border-blue-400".to_owned());
+        selectors.push(".duid-page > *:::border border-solid border-blue-400".to_owned());
         classes.push("duid-page".to_owned());
 
         page.add_selectors(&selectors);
