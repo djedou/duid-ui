@@ -14,7 +14,7 @@ members = [
 ]
 
 exclude = [
-    #"examples/holy_grail_app",
+    "examples/navigation_app",
     "examples/button_app",
     "examples/text_app",
     "examples/page_app",
