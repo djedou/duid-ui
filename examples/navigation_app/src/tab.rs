@@ -98,8 +98,15 @@ pub fn tab_app_update(model: &mut TabAppModel, msg: TabAppMsg) -> Cmd<TabAppMsg>
         TabAppMsg::Msg(tab) => {
             match tab {
                 TabNavMsg::Item((index, m)) => {
-                    model.menus[index].set_selected(true);
-                    model.menus[model.tab_index].set_selected(false);
+                    model.menus.iter_mut().enumerate().for_each(|(i,item)| {
+                        if index == i {
+                            item.set_selected(true);
+                        }
+                        else {
+                            item.set_selected(false);
+                        }
+                    });
+
                     model.tab_index = index;
 
                     //duid_ui::duid::console::info!("tab index: {} message: {:#?}", index, m);
