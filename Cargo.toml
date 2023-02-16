@@ -6,7 +6,7 @@ edition = "2021"
 
 [dependencies]
 duid-components = { version = "0.2", path = "packages/duid-components" }
-duid = { version = "0.2", git = "https://github.com/djedou/duid" , branch = "feat/css_builder" }
+duid = { version = "0.2", git = "https://github.com/djedou/duid" , branch = "feat/refactoring_dom_builder" }
 
 [workspace]
 members = [
