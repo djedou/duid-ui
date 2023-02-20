@@ -8,7 +8,6 @@ use duid_ui::{
     },
     components::{
         navigation::{
-            //page::{page_view, PageModel, PageMsg}
             tab_nav::{TabNavMsg, TabNavModel, tab_nav_view, tab_nav_element_view, TabNavItemMsg, TabNavElementModel}
         },
         typography::{
@@ -18,23 +17,16 @@ use duid_ui::{
 };
 
 
-// Messages
-#[derive(Debug, PartialEq, Clone)]
-pub enum Messages {
-    Msg,
-}
-
 
 // Messages
 #[derive(Debug, PartialEq, Clone)]
 pub enum TabAppMsg {
-    Msg(TabNavMsg<Messages>)
+    Msg(TabNavMsg)
 }
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct TabAppModel {
     pub tab_nav: TabNavModel,
-    pub tab_index: usize,
     pub menus: Vec<TabNavElementModel>
 
 }
@@ -53,7 +45,6 @@ impl TabAppModel {
 
         TabAppModel {
             tab_nav: TabNavModel::new(),
-            tab_index: 0,
             menus
         }
     }
@@ -76,17 +67,6 @@ pub fn tab_app_view(tab_app_model: &TabAppModel) -> Node<TabAppMsg> {
 
     tab_nav_view(
         &tab_app_model.tab_nav,
-        div(
-            &[], 
-            &[
-                match tab_app_model.tab_index {
-                    1 => text_view(&TextModel::new(), "Content 2").map_msg(|_| TabNavMsg::Content(Messages::Msg)),
-                    2 => text_view(&TextModel::new(), "Content 3").map_msg(|_| TabNavMsg::Content(Messages::Msg)),
-                    _ => text_view(&TextModel::new(), "Content 1").map_msg(|_| TabNavMsg::Content(Messages::Msg))
-                }
-                
-            ]
-        ),
         menu_items,
         None//vec![(1, div(&[], &[]))]
     ).map_msg(|m| TabAppMsg::Msg(m))
@@ -107,9 +87,6 @@ pub fn tab_app_update(model: &mut TabAppModel, msg: TabAppMsg) -> Cmd<TabAppMsg>
                         }
                     });
 
-                    model.tab_index = index;
-
-                    //duid_ui::duid::console::info!("tab index: {} message: {:#?}", index, m);
                     Cmd::none()
                 },
                 _ => Cmd::none()

@@ -21,16 +21,3 @@ pub(crate) fn get_tab_nav_selectors() -> HashSet<String> {
 
     selectors
 }
-
-
-/*
-
-
-
- {
-  margin-left: 8px;
-}
-
-
-
-*/
