@@ -18,4 +18,5 @@ exclude = [
     "examples/button_app",
     "examples/text_app",
     "examples/page_app",
+    "examples/select_app"
 ]

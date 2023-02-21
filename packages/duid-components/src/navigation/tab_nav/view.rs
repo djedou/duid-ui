@@ -2,7 +2,7 @@ use super::{TabNavModel, TabNavItemMsg, TabNavMsg, ExtraTabNavItemMsg};
 use duid::{
     html::{
         nav, div,
-        attributes::{classes, selectors, empty_attr, Attribute, AttributeValue, Value},
+        attributes::{classes, selectors, Attribute, AttributeValue, Value},
         nodes::Node
     },
     duid_events::NodeMapMsg

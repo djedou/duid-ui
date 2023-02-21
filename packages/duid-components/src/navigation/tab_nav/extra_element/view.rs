@@ -9,7 +9,6 @@ use duid::{
         attributes::{classes, selectors, Attribute, AttributeValue, Value},
         nodes::Node
     },
-    duid_events::NodeMapMsg,
     events
 };
 

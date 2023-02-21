@@ -68,10 +68,6 @@ pub fn button_view(button_model: &ButtonModel, child: Node<ButtonMsg>, icon: Opt
                         &build_attributes(&button_model),
                         &[
                             child,
-                            /*span(
-                                &[classes(&["Counter".to_string()])],
-                                &[  text()]
-                            )*/
                             text_view(&TextModel::new(), &button_model.count.to_string()).map_msg(|_| ButtonMsg::NoAction)
                         ]
                     )

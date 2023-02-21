@@ -10,6 +10,7 @@ pub(crate) fn get_button_default_selectors() -> HashSet<String> {
     let _ = selectors.insert(".btn i:::not-italic font-medium opacity-75".to_owned());
     let _ = selectors.insert(".btn .octicon:::mr-1.5 color-stone-400".to_owned());
     let _ = selectors.insert(".btn .octicon:only-child:::mr-0".to_owned());
+    let _ = selectors.insert(".btn .dropdown-caret:::ml-1 opacity-80".to_owned());
 
     // ButtonKind::Default
     let _ = selectors.insert(".btn-default:::color-btn-text bg-color-btn border-color-btn shadow-btn-default shadow-color-btn-default-inset transition".to_owned());
@@ -19,7 +20,6 @@ pub(crate) fn get_button_default_selectors() -> HashSet<String> {
     let _ = selectors.insert(".btn-default:disabled, .btn-default.disabled, .btn-default[aria-disabled=true]:::bg-color-btn color-gray-300 border-color-btn".to_owned());
     let _ = selectors.insert(".btn-default:disabled .octicon, .btn-default.disabled .octicon, .btn-default[aria-disabled=true] .octicon:::color-gray-300".to_owned());
     let _ = selectors.insert(".btn-default .Counter:::color-inherit align-top ml-0.5 bg-color-btn-counter".to_owned());
-    let _ = selectors.insert(".btn .dropdown-caret:::ml-1 opacity-80".to_owned());
 
     // ButtonKind::Filled
     let _ = selectors.insert(".btn-filled:::shadow-btn-filled shadow-color-btn-filled shadow-color-btn-filled-inset".to_owned());
