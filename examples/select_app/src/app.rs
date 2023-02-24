@@ -53,7 +53,6 @@ pub fn app_view(app_model: &AppModel) -> Node<AppMsg> {
 
     select_menu_view(
         &app_model.select_menu,
-        text_view(&TextModel::new(), "menu").map_msg(|_| SelectMenuMsg::NoAction),
         None,
         modal_children(),
         None
@@ -61,8 +60,20 @@ pub fn app_view(app_model: &AppModel) -> Node<AppMsg> {
 }
 
 
-pub fn app_update(_model: &mut AppModel, _msg: AppMsg) -> Cmd<AppMsg> {
-    Cmd::none()
+pub fn app_update(model: &mut AppModel, msg: AppMsg) -> Cmd<AppMsg> {
+    match msg {
+        AppMsg::SelectMenu(select) => {
+            match select {
+                SelectMenuMsg::Button(btn) => {
+                    duid_ui::duid::console::info!("msg: {:#?}", btn);
+                    let open = model.select_menu.is_open();
+                    model.select_menu.set_is_open(!open);
+                    Cmd::none()
+                },
+                _ => Cmd::none()
+            }
+        }
+    }
 }
 
 pub fn app_subscription(_model: &AppModel) -> Sub<AppMsg> {

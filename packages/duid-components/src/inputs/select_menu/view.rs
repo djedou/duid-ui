@@ -1,7 +1,11 @@
-use super::{SelectMenuMsg, SelectMenuModel, details_selectors};
+use super::{SelectMenuMsg, SelectMenuModel};
+use crate::{
+    inputs::buttons::{ButtonMsg, button_view},
+    typography::text::text_view
+};
 use duid::{
         html::{
-            div, details, summary,
+            div,
             attributes::{classes, selectors, Attribute, AttributeValue, Value},
             nodes::Node
         },
@@ -11,14 +15,13 @@ use duid::{
 
 pub fn select_menu_view<M: Clone + 'static>(
     select_menu_model: &SelectMenuModel,
-    button_msg: Node<SelectMenuMsg<M>>,
     header: Option<Node<M>>, 
     body: Node<M>, 
     footer: Option<Node<M>>
 ) -> Node<SelectMenuMsg<M>> {
     
-    let summary_classes: Vec<_> = select_menu_model.classes.iter().collect();
-    let summary_selectors: Vec<_> = select_menu_model.selectors.iter().collect();
+    let select_menu_classes: Vec<_> = select_menu_model.classes.iter().collect();
+    let select_menu_selectors: Vec<_> = select_menu_model.selectors.iter().collect();
     let mut modal_children = Vec::with_capacity(2);
 
     if let Some(head) = header {
@@ -29,45 +32,38 @@ pub fn select_menu_view<M: Clone + 'static>(
         modal_children.push(foot.map_msg(|m| SelectMenuMsg::Msg(m)));
     }
     
+    let mut modal_classes = vec!["SelectMenu-modal-hidden".to_owned()];
+    if select_menu_model.is_open {
+        modal_classes.push("SelectMenu-modal".to_owned());
+    }
+    
 
-    details(
+    div(
         &[
-            selectors(&details_selectors()),
-            classes(&["details-reset details-overlay".to_owned()])
+            classes(&select_menu_classes),
+            selectors(&select_menu_selectors)
         ],
         &[
-            summary(
-                &[
-                    classes(&summary_classes),
-                    selectors(&summary_selectors),
-                    Attribute::new(None, "aria-haspopup", AttributeValue::from_value(Value::Bool(true))),
-                ],
-                &[
-                    button_msg
-                ]
-            ),
+            button_view(
+                &select_menu_model.button_model,
+                text_view(
+                    &select_menu_model.button_text_model, 
+                    &select_menu_model.button_text
+                ).map_msg(|_| ButtonMsg::NoAction),
+                None
+            ).map_msg(|m| SelectMenuMsg::Button(m)),
             div(
                 &[
-                    classes(&["SelectMenu".to_owned()])
+                    classes(&modal_classes)
                 ],
-                &[
-                    div(
-                        &[
-                            classes(&["SelectMenu-modal".to_owned()])
-                        ],
-                        &modal_children
-                    ),
-                ]
-            )
+                &modal_children
+            ),
         ]
     )
 
 
 /*
-{
-   
-   border-bottom: 1px solid var(--color-border-muted);
-   }
+
 
     .SelectMenu-header {
         display: flex;
