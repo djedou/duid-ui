@@ -25,11 +25,14 @@ impl SelectMenuModel {
         button_model.set_size_sm();
         button_model.set_kind_default();
         button_model.set_colors_default();
+
+        let mut classes = HashSet::with_capacity(0);
+        classes.insert("select-menu-container".to_owned());
         
 
         SelectMenuModel {
             selectors: default_select_menu_selectors(),
-            classes: HashSet::with_capacity(0),
+            classes,
             button_model,
             button_text: String::from("Select"),
             button_text_model: TextModel::new(),
