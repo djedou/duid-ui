@@ -21,11 +21,11 @@ pub(crate) fn default_select_menu_selectors() -> HashSet<String> {
     selectors.push(".details-overlay > summary.btn-filled:focus:::outline outline-2 outline-slate-400 outline-offset-2[-2px] shadow-none[inset&0&0&0&3px&shadow-gray-400]".to_owned());
     selectors.push(".details-overlay > summary.btn-filled:focus:not(:focus-visible):::outline outline-1 outline-transparent shadow-none".to_owned());
     selectors.push(".details-overlay > summary.btn-filled:focus-visible:::outline outline-2 outline-slate-400 outline-offset-2[-2px] shadow-none[inset&0&0&0&3px&shadow-gray-400]".to_owned());
-    */
-
+    
     
     selectors.insert(".SelectMenu:::w-fit relative inset-0 z-98 flex p-1 pointer-events-none flex-col".to_owned());
     selectors.insert(".SelectMenu::before:::absolute inset-0 z-98 flex p-4 pointer-events-none content-[\"&\"]".to_owned());
+    */
     
     selectors.insert(".SelectMenu-modal:::relative inset-0 z-98 max-h-0[66%] my-1 mx-0 overflow-hidden pointer-events-auto bg-color-gray-50 border border-solid border-slate-400 rounded-md shadow-md shadow-slate-400".to_owned()); //  animation[SelectMenu-modal-animation&0.12s&cubic-bezier(0,&0.1,&0.1,&1)&backwards;@keyframes&SelectMenu-modal-animation&{0%&{opacity:&0;transform:&scale(0.9);}}]
     selectors.insert(".SelectMenu-modal-hidden:::hidden".to_owned());
