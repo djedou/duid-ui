@@ -57,10 +57,17 @@ pub fn select_menu_view<M: Clone + 'static>(
             ).map_msg(|m| SelectMenuMsg::Button(m)),
             div(
                 &[
-                    classes(&modal_classes)
+                    classes(&["SelectMenu".to_owned()])
                 ],
-                &modal_children
-            ),
+                &[
+                    div(
+                        &[
+                            classes(&modal_classes)
+                        ],
+                        &modal_children
+                    )
+                ]
+            )
         ]
     )
 
