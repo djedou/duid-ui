@@ -32,9 +32,12 @@ pub fn select_menu_view<M: Clone + 'static>(
         modal_children.push(foot.map_msg(|m| SelectMenuMsg::Msg(m)));
     }
     
-    let mut modal_classes = vec!["SelectMenu-modal-hidden".to_owned()];
+    let mut modal_classes = vec!["SelectMenu-modal".to_owned()];
     if select_menu_model.is_open {
-        modal_classes.push("SelectMenu-modal".to_owned());
+        modal_classes.push("SelectMenu-modal-show".to_owned());
+    }
+    else {
+        modal_classes.push("SelectMenu-modal-hidden".to_owned());
     }
     
 
