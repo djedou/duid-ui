@@ -74,7 +74,7 @@ pub(crate) fn get_button_default_selectors() -> HashSet<String> {
     let _ = selectors.insert(".btn-outline-colors-danger:disabled, .btn-outline-colors-danger.disabled, .btn-outline-colors-danger[aria-disabled=true]:::bg-color-red-200".to_owned());
 
     // Button Size sm
-    let _ = selectors.insert(".btn-sm:::py-1 px-3 text-xs".to_owned());
+    let _ = selectors.insert(".btn-sm:::py-0.5 px-3 text-xs".to_owned());
     let _ = selectors.insert(".btn-sm .octicon:::align-text-top".to_owned());
 
     // Button Size md
@@ -82,7 +82,7 @@ pub(crate) fn get_button_default_selectors() -> HashSet<String> {
     let _ = selectors.insert(".btn-md .octicon:::align-text-bottom".to_owned());
 
     // Button Size lg
-    let _ = selectors.insert(".btn-lg:::py-2 px-5 text-base".to_owned());
+    let _ = selectors.insert(".btn-lg:::py-2.5 px-5 text-base".to_owned());
     let _ = selectors.insert(".btn-lg .octicon:::align-text-bottom".to_owned());
 
     // Button Icon Only
