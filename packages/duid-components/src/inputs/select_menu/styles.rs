@@ -26,10 +26,10 @@ pub(crate) fn default_select_menu_selectors() -> HashSet<String> {
     selectors.insert(".SelectMenu:::w-fit relative inset-0 z-98 flex p-1 pointer-events-none flex-col".to_owned());
     selectors.insert(".SelectMenu::before:::absolute inset-0 z-98 flex p-4 pointer-events-none content-[\"&\"]".to_owned());
     */
-    selectors.insert(".select-menu-container:::absolute".to_owned());
-    selectors.insert(".SelectMenu-modal:::relative inset-0 z-98 max-h-0[66%] my-1 mx-0 overflow-hidden pointer-events-auto bg-color-gray-50 border border-solid border-slate-400 rounded-md shadow-md shadow-slate-400".to_owned()); //  animation[SelectMenu-modal-animation&0.12s&cubic-bezier(0,&0.1,&0.1,&1)&backwards;@keyframes&SelectMenu-modal-animation&{0%&{opacity:&0;transform:&scale(0.9);}}]
+    selectors.insert(".select-menu-container:::relative inline-block".to_owned());
+    selectors.insert(".SelectMenu-modal:::inset-0 z-98 max-h-0[66%] my-1 mx-0 overflow-hidden pointer-events-auto bg-color-gray-50 border border-solid border-slate-400 rounded-md shadow-md shadow-slate-400".to_owned()); //  animation[SelectMenu-modal-animation&0.12s&cubic-bezier(0,&0.1,&0.1,&1)&backwards;@keyframes&SelectMenu-modal-animation&{0%&{opacity:&0;transform:&scale(0.9);}}]
     selectors.insert(".SelectMenu-modal-hidden:::hidden".to_owned());
-    selectors.insert(".SelectMenu-modal-show:::flex flex-col".to_owned()); //  w-fit
+    selectors.insert(".SelectMenu-modal-show:::absolute block".to_owned()); //  w-fit
     selectors.insert(".SelectMenu-list:::flex flex-col p-0 mt-0 mr-0 ml-0 mb-0[-1px] flex-auto overflow-x-hidden overflow-y-auto bg-color-gray-50".to_owned());
     selectors.insert(".SelectMenu-item:::flex items-center w-full px-4 py-1 overflow-hidden text-left cursor-pointer border-t-0 border-l-0 border-r-0 border-b border-solid border-gray-400".to_owned());
 
