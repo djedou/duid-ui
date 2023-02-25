@@ -20,7 +20,7 @@ pub fn select_menu_view<M: Clone + 'static>(
     footer: Option<Node<M>>
 ) -> Node<SelectMenuMsg<M>> {
     
-    let select_menu_classes: Vec<_> = select_menu_model.classes.iter().collect();
+    let mut select_menu_classes: Vec<_> = select_menu_model.classes.iter().collect();
     let select_menu_selectors: Vec<_> = select_menu_model.selectors.iter().collect();
     let mut modal_children = Vec::with_capacity(2);
 
@@ -38,6 +38,11 @@ pub fn select_menu_view<M: Clone + 'static>(
     }
     else {
         modal_classes.push("SelectMenu-modal-hidden".to_owned());
+    }
+
+    if select_menu_model.right_aligned {
+        select_menu_classes.push("select-menu-container-right-aligned".to_owned());
+        modal_classes.push("SelectMenu-modal-right-aligned".to_owned());
     }
     
 
