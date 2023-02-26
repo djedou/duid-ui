@@ -5,8 +5,8 @@ use crate::{
 };
 use duid::{
         html::{
-            div,
-            attributes::{classes, selectors, Attribute, AttributeValue, Value},
+            details, div,
+            attributes::{classes, selectors},
             nodes::Node
         },
         duid_events::{NodeMapMsg}    
@@ -33,12 +33,6 @@ pub fn select_menu_view<M: Clone + 'static>(
     }
     
     let mut modal_classes = vec!["SelectMenu-modal".to_owned()];
-    if select_menu_model.is_open {
-        modal_classes.push("SelectMenu-modal-show".to_owned());
-    }
-    else {
-        modal_classes.push("SelectMenu-modal-hidden".to_owned());
-    }
 
     if select_menu_model.right_aligned {
         select_menu_classes.push("select-menu-container-right-aligned".to_string());
@@ -46,7 +40,7 @@ pub fn select_menu_view<M: Clone + 'static>(
     }
     
 
-    div(
+    details(
         &[
             classes(&select_menu_classes),
             selectors(&select_menu_selectors)
@@ -68,7 +62,7 @@ pub fn select_menu_view<M: Clone + 'static>(
             )
         ]
     )
-
+}
 
 /*
 
@@ -287,4 +281,3 @@ pub fn select_menu_view<M: Clone + 'static>(
         pointer-events: none;
         }
     */
-}

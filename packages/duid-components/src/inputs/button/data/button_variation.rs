@@ -3,5 +3,6 @@
 pub enum ButtonVariation {
     Normal,
     Block,
-    Link
+    Link,
+    Summary
 }

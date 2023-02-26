@@ -14,7 +14,6 @@ pub struct SelectMenuModel {
     pub button_model: ButtonModel,
     pub button_text: String,
     pub button_text_model: TextModel,
-    pub(crate) is_open: bool,
     pub(crate) right_aligned: bool
 }
 
@@ -26,9 +25,10 @@ impl SelectMenuModel {
         button_model.set_size_sm();
         button_model.set_kind_default();
         button_model.set_colors_default();
+        button_model.set_variation_summary();
 
         let mut classes = HashSet::with_capacity(0);
-        classes.insert("select-menu-container".to_owned());
+        classes.insert("select-menu-container details-reset".to_owned());
         
 
         SelectMenuModel {
@@ -37,7 +37,6 @@ impl SelectMenuModel {
             button_model,
             button_text: String::from("Select"),
             button_text_model: TextModel::new(),
-            is_open: false,
             right_aligned: false
         }
     }
@@ -68,14 +67,6 @@ impl SelectMenuModel {
 
     pub fn set_button_text(&mut self, button_text: impl AsRef<str>) {
         self.button_text = button_text.as_ref().to_string();
-    }
-
-    pub fn set_is_open(&mut self, open: bool) {
-        self.is_open = open;
-    }
-    
-    pub fn is_open(&mut self) -> bool {
-        self.is_open
     }
 
     pub fn set_right_aligned(&mut self, open: bool) {

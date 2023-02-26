@@ -126,8 +126,13 @@ impl ButtonModel {
       
       // Button Variaton Link
       let mut variation_link_classes_set = HashSet::with_capacity(0);
-      let _ = variation_link_classes_set.insert(".btn-link".to_owned());
+      let _ = variation_link_classes_set.insert("btn-link".to_owned());
       let _ = variation_classes.insert(ButtonVariation::Link, variation_link_classes_set);
+      
+      // Button Variaton Summary
+      let mut variation_summary_classes_set = HashSet::with_capacity(0);
+      let _ = variation_summary_classes_set.insert("btn-normal".to_owned());
+      let _ = variation_classes.insert(ButtonVariation::Summary, variation_summary_classes_set);
       
 
       ButtonModel {
@@ -246,6 +251,11 @@ impl ButtonModel {
     pub fn set_variation_link(&mut self) {
         self.variation = ButtonVariation::Link;
     }
+
+    pub fn set_variation_summary(&mut self) {
+        self.variation = ButtonVariation::Summary;
+    }
+    
 
     pub fn set_button_icon_none(&mut self) {
         self.icon = ButtonIcon::None;

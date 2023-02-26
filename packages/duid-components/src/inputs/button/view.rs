@@ -1,7 +1,7 @@
 use super::{ButtonMsg, ButtonModel, ButtonKind, ButtonIcon, ButtonState, ButtonColor, ButtonSize, ButtonVariation};
 use duid::{
         html::{
-            button, span, a,
+            button, span, a, summary,
             attributes::{classes, selectors, Attribute, AttributeValue, Value, disabled, empty_attr},
             nodes::Node
         },
@@ -21,6 +21,58 @@ pub fn button_view(button_model: &ButtonModel, child: Node<ButtonMsg>, icon: Opt
                 &build_attributes(&button_model),
                 &[child]
             )
+        },
+        &ButtonVariation::Summary => {
+            match button_model.icon {
+                ButtonIcon::None => {
+                    summary(
+                        &build_attributes(&button_model),
+                        &[child]
+                    )
+                },
+                ButtonIcon::HiddenText => {
+                    summary(
+                        &[
+                            classes(&["hidden-text-expander inline".to_owned()])
+                        ],
+                        &[
+                            button(
+                                &build_attributes(&button_model),
+                                &[
+                                    text_view(&TextModel::new(), "...")
+                                        .map_msg(|_| ButtonMsg::NoAction)
+                                ]
+                            )
+                        ]
+                    )
+                },
+                ButtonIcon::With => {
+                    summary(
+                        &build_attributes(&button_model),
+                        &[
+                            icon.unwrap_or(span(&[],&[])),
+                            child
+                        ]
+                    )
+                },
+                ButtonIcon::Only | ButtonIcon::Close => {
+                    summary(
+                        &build_attributes(&button_model),
+                        &[
+                            icon.unwrap_or(span(&[],&[])),
+                        ]
+                    )
+                },
+                ButtonIcon::Count => {
+                    summary(
+                        &build_attributes(&button_model),
+                        &[
+                            child,
+                            text_view(&TextModel::new(), &button_model.count.to_string()).map_msg(|_| ButtonMsg::NoAction)
+                        ]
+                    )
+                }
+            }
         },
         _ => {
             match button_model.icon {
@@ -93,7 +145,6 @@ fn build_attributes(button_model: &ButtonModel) -> Vec<Attribute<ButtonMsg>> {
         vec![
             classes(&button_classes_vec),
             selectors(&button_selectors_vec),
-            events::on_click(|_| ButtonMsg::OnClick),
             Attribute::new(None, "type", AttributeValue::from_value(Value::String("button".to_owned()))),
             if button_model.is_group_item {
                 classes(&["BtnGroup-item".to_owned()])
@@ -104,7 +155,7 @@ fn build_attributes(button_model: &ButtonModel) -> Vec<Attribute<ButtonMsg>> {
         ];
     
         match &button_model.variation {
-            &ButtonVariation::Normal | &ButtonVariation::Block => {
+            &ButtonVariation::Normal | &ButtonVariation::Block | &ButtonVariation::Summary => {
                 // Set Button Kind attributes
                 match &button_model.kind {
                     &ButtonKind::Default => {
@@ -242,19 +293,37 @@ fn build_attributes(button_model: &ButtonModel) -> Vec<Attribute<ButtonMsg>> {
         &ButtonVariation::Normal => {
             if let Some(normal_class) = button_model.variation_classes.get(&ButtonVariation::Normal) {
                 let normal_class_vec: Vec<_> = normal_class.iter().collect();
-                button_attributes.extend([classes(&normal_class_vec)]);
+                button_attributes.extend([
+                    classes(&normal_class_vec),
+                    events::on_click(|_| ButtonMsg::OnClick)
+                ]);
             }
         },
         &ButtonVariation::Block => {
             if let Some(block_class) = button_model.variation_classes.get(&ButtonVariation::Block) {
                 let block_class_vec: Vec<_> = block_class.iter().collect();
-                button_attributes.extend([classes(&block_class_vec)]);
+                button_attributes.extend([
+                    classes(&block_class_vec),
+                    events::on_click(|_| ButtonMsg::OnClick),
+                ]);
             }
         },
         &ButtonVariation::Link => {
             if let Some(link_class) = button_model.variation_classes.get(&ButtonVariation::Link) {
                 let link_class_vec: Vec<_> = link_class.iter().collect();
-                button_attributes.extend([classes(&link_class_vec)]);
+                button_attributes.extend([
+                    classes(&link_class_vec),
+                    events::on_click(|_| ButtonMsg::OnClick)
+                ]);
+            }
+        },
+        &ButtonVariation::Summary => {
+            if let Some(summary_class) = button_model.variation_classes.get(&ButtonVariation::Summary) {
+                let summary_class_vec: Vec<_> = summary_class.iter().collect();
+                button_attributes.extend([
+                    classes(&summary_class_vec),
+                    Attribute::new(None, "aria-haspopup", AttributeValue::from_value(Value::Bool(true)))
+                ]);
             }
         }
     };
