@@ -3,34 +3,6 @@ use std::collections::HashSet;
 
 pub(crate) fn default_select_menu_selectors() -> HashSet<String> {
     let mut selectors = HashSet::with_capacity(0);
-
-    /*
-    selectors.insert(".details-reset[open] > summary::before:::fixed inset-0 z-4 block cursor-default content-[\"&\"] bg-color-transparent".to_owned());
-    selectors.insert(".details-reset > summary:::list-none w-fit duration-75 ease-linear[cubic-bezier(0.33,&1,&0.68,&1)] transition-none[color,&background-color,&box-shadow,&border-color]".to_owned());
-    selectors.insert(".details-reset > summary:focus:::outline outline-2 outline-slate-400 outline-offset-2[-2px] shadow-none".to_owned());
-    selectors.insert(".details-reset > summary:focus:not(:focus-visible):::outline outline-1 outline-transparent".to_owned());
-    selectors.insert(".details-reset > summary:focus-visible:::outline outline-2 outline-slate-400 outline-offset-2[-2px]".to_owned());
-    selectors.insert(".details-reset > summary.btn-filled:focus:::outline outline-2 outline-slate-400 outline-offset-2[-2px] shadow-none[inset&0&0&0&3px&shadow-gray-400]".to_owned());
-    selectors.insert(".details-reset > summary.btn-filled:focus:not(:focus-visible):::outline outline-1 outline-transparent shadow-none".to_owned());
-    selectors.insert(".details-reset > summary.btn-filled:focus-visible:::outline outline-2 outline-slate-400 outline-offset-2[-2px] shadow-none[inset&0&0&0&3px&shadow-gray-400]".to_owned());
-
-    selectors.insert(".details-reset > summary::before:::hidden".to_owned());
-
-    selectors.insert(".details-reset > summary::-webkit-details-marker:::hidden".to_owned());
-    selectors.insert(".details-overlay > summary:::duration-75 ease-linear[cubic-bezier(0.33,&1,&0.68,&1)] transition-none[color,&background-color,&box-shadow,&border-color]".to_owned());
-    selectors.insert(".details-overlay > summary:focus:::outline outline-2 outline-slate-400 outline-offset-2[-2px] shadow-none".to_owned());
-    selectors.insert(".details-overlay > summary:focus:not(:focus-visible):::outline outline-1 outline-transparent".to_owned());
-    selectors.insert(".details-overlay > summary:focus-visible:::outline outline-2 outline-slate-400 outline-offset-2[-2px] shadow-none".to_owned());
-    selectors.insert(".details-overlay > summary.btn-filled:focus:::outline outline-2 outline-slate-400 outline-offset-2[-2px] shadow-none[inset&0&0&0&3px&shadow-gray-400]".to_owned());
-    selectors.insert(".details-overlay > summary.btn-filled:focus:not(:focus-visible):::outline outline-1 outline-transparent shadow-none".to_owned());
-    selectors.insert(".details-overlay > summary.btn-filled:focus-visible:::outline outline-2 outline-slate-400 outline-offset-2[-2px] shadow-none[inset&0&0&0&3px&shadow-gray-400]".to_owned());
-    */
-    
-    //selectors.insert(".SelectMenu:::w-fit relative inset-0 z-98 flex p-1 pointer-events-none flex-col".to_owned());
-    //selectors.insert(".SelectMenu::before:::absolute inset-0 z-98 flex p-4 pointer-events-none content-[\"&\"]".to_owned());
-    
-
-
     
     selectors.insert(".details-reset[open] > summary::before:::fixed inset-0 z-4 block cursor-default content-[\"&\"] bg-color-transparent".to_owned());
     selectors.insert(".details-reset > summary::before:::hidden".to_owned());
