@@ -6,7 +6,8 @@ edition = "2021"
 
 [dependencies]
 duid-components = { version = "0.2", path = "duid-components" }
-duid = { version = "0.2", git = "https://github.com/djedou/duid" , branch = "feat/dom_without_patches" }
+#duid = { version = "0.2", git = "https://github.com/djedou/duid" , branch = "feat/dom_without_patches" }
+duid = { version = "0.2", git = "https://github.com/djedou/duid" , branch = "feat/dom_diff" }
 
 [workspace]
 members = [
