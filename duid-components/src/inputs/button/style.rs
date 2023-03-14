@@ -8,54 +8,54 @@ pub(crate) fn get_button_default_selectors() -> HashSet<String> {
     let _ = selectors.insert(".btn:::font-medium leading-5 whitespace-nowrap align-middle cursor-pointer select-none appearance-none".to_owned());
     let _ = selectors.insert(".btn:disabled, .btn.disabled, .btn[aria-disabled=true]:::cursor-default".to_owned());
     let _ = selectors.insert(".btn i:::not-italic font-medium opacity-75".to_owned());
-    let _ = selectors.insert(".btn .octicon:::mr-1.5 color-stone-400".to_owned());
+    let _ = selectors.insert(".btn .octicon:::mr-1.5 color--24-6-64".to_owned());
     let _ = selectors.insert(".btn .octicon:only-child:::mr-0".to_owned());
     let _ = selectors.insert(".btn .dropdown-caret:::ml-1 opacity-80".to_owned());
 
     // ButtonKind::Default
-    let _ = selectors.insert(".btn-default:::color-btn-text bg-color-btn border-color-btn shadow-btn-default shadow-color-btn-default-inset transition".to_owned());
-    let _ = selectors.insert(".btn-default:hover, .btn-default.hover, [open] > .btn-default:::bg-color-btn-hover border-color-btn-hover duration-1000".to_owned());
-    let _ = selectors.insert(".btn-default:active:::bg-color-btn-active border-color-btn-active transition-none".to_owned());
-    let _ = selectors.insert(".btn-default.selected, .btn-default[aria-selected=true]:::bg-color-btn-selected shadow-btn-active shadow-color-btn-active".to_owned());
-    let _ = selectors.insert(".btn-default:disabled, .btn-default.disabled, .btn-default[aria-disabled=true]:::bg-color-btn color-gray-300 border-color-btn".to_owned());
-    let _ = selectors.insert(".btn-default:disabled .octicon, .btn-default.disabled .octicon, .btn-default[aria-disabled=true] .octicon:::color-gray-300".to_owned());
-    let _ = selectors.insert(".btn-default .Counter:::color-inherit align-top ml-0.5 bg-color-btn-counter".to_owned());
+    let _ = selectors.insert(".btn-default:::color--213-23-16 bg-color--210-0-98 border-color--213-25-12 shadow-btn-default inset-shadow-color-var--0-0-100 transition".to_owned());
+    let _ = selectors.insert(".btn-default:hover, .btn-default.hover, [open] > .btn-default:::bg-color--220-0-88 border-color--220-0-88 duration-1000".to_owned());
+    let _ = selectors.insert(".btn-default:active:::bg-color--220-1-96 border-color--195-92-52 transition-none".to_owned());
+    let _ = selectors.insert(".btn-default.selected, .btn-default[aria-selected=true]:::bg-color--220-14-94 shadow-btn-active shadow-color--27-31-36".to_owned());
+    let _ = selectors.insert(".btn-default:disabled, .btn-default.disabled, .btn-default[aria-disabled=true]:::bg-color--210-2-97 color--216-5-84 border-color-btn--213-25-12".to_owned());
+    let _ = selectors.insert(".btn-default:disabled .octicon, .btn-default.disabled .octicon, .btn-default[aria-disabled=true] .octicon:::color--216-5-84".to_owned());
+    let _ = selectors.insert(".btn-default .Counter:::color--inherit align-top ml-0.5 bg-color--27-31-36".to_owned());
 
     // ButtonKind::Filled
-    let _ = selectors.insert(".btn-filled:::shadow-btn-filled shadow-color-btn-filled shadow-color-btn-filled-inset".to_owned());
+    let _ = selectors.insert(".btn-filled:::shadow-btn-filled shadow-color--27-31-36 shadow-color--255-255-255".to_owned());
     let _ = selectors.insert(".btn-filled:focus, .btn-filled:focus-visible:::outline-2 outline-offset-2[-2px] outline shadow-btn-focus shadow-color-btn-focus".to_owned());
     let _ = selectors.insert(".btn-filled:focus:not(:focus-visible):::outline-none shadow-none".to_owned());
     let _ = selectors.insert(".btn-filled:active, .btn-filled.selected, .btn-filled[aria-selected=true]:::shadow-btn-focus shadow-color-btn-focus".to_owned());
-    let _ = selectors.insert(".btn-filled:disabled, .btn-filled.disabled, .btn-filled[aria-disabled=true]:::color-white".to_owned());
+    let _ = selectors.insert(".btn-filled:disabled, .btn-filled.disabled, .btn-filled[aria-disabled=true]:::color--white".to_owned());
     let _ = selectors.insert(".btn-filled:disabled .octicon, .btn-filled.disabled .octicon, .btn-filled[aria-disabled=true] .octicon:::color-btn-filled-disabled-text".to_owned());
-    let _ = selectors.insert(".btn-filled .Counter:::color-inherit bg-color-btn-filled-counter".to_owned());
+    let _ = selectors.insert(".btn-filled .Counter:::color--inherit bg-color-btn-filled-counter".to_owned());
     let _ = selectors.insert(".btn-filled .octicon:::color-btn-filled-icon".to_owned());
 
     // ButtonColor::Filled Color Default
-    let _ = selectors.insert(".btn-filled-colors:::color-white bg-color-btn-filled border-color-btn-filled".to_owned());
-    let _ = selectors.insert(".btn-filled-colors:hover, .btn-filled-colors.hover, [open] > .btn-filled-colors:::bg-color-btn-filled-hover border-color-btn-filled-hover".to_owned());
-    let _ = selectors.insert(".btn-filled-colors:focus, .btn-filled-colors:focus-visible:::outline-green-400".to_owned());
-    let _ = selectors.insert(".btn-filled-colors:active, .btn-filled-colors.selected, .btn-filled-colors[aria-selected=true]:::bg-color-btn-filled-selected".to_owned());
-    let _ = selectors.insert(".btn-filled-colors:disabled, .btn-filled-colors.disabled, .btn-filled-colors[aria-disabled=true]:::bg-color-btn-filled-disabled border-color-btn-filled-disabled".to_owned());
+    let _ = selectors.insert(".btn-filled-colors:::color--white bg-color--129-83-57 border-color--129-75-50".to_owned());
+    let _ = selectors.insert(".btn-filled-colors:hover, .btn-filled-colors.hover, [open] > .btn-filled-colors:::bg-color--129-94-43 border-color--129-94-75".to_owned());
+    let _ = selectors.insert(".btn-filled-colors:focus, .btn-filled-colors:focus-visible:::outline--129-69-57".to_owned());
+    let _ = selectors.insert(".btn-filled-colors:active, .btn-filled-colors.selected, .btn-filled-colors[aria-selected=true]:::bg-color--129-63-47".to_owned());
+    let _ = selectors.insert(".btn-filled-colors:disabled, .btn-filled-colors.disabled, .btn-filled-colors[aria-disabled=true]:::bg-color--129-45-65 border-color--129-37-65".to_owned());
 
     // ButtonColor::Filled Color Danger
-    let _ = selectors.insert(".btn-filled-danger-colors:::color-white bg-color-red-500 border-red-600".to_owned());
-    let _ = selectors.insert(".btn-filled-danger-colors:hover, .btn-filled-danger-colors.hover, [open] > .btn-filled-danger-colors:::bg-color-red-600".to_owned());
-    let _ = selectors.insert(".btn-filled-danger-colors:focus, .btn-filled-danger-colors:focus-visible:::outline-green-400".to_owned());
-    let _ = selectors.insert(".btn-filled-danger-colors:active, .btn-filled-danger-colors.selected, .btn-filled-danger-colors[aria-selected=true]:::bg-color-red-600".to_owned());
-    let _ = selectors.insert(".btn-filled-danger-colors:disabled, .btn-filled-danger-colors.disabled, .btn-filled-danger-colors[aria-disabled=true]:::bg-color-red-200 border-red-300".to_owned());
+    let _ = selectors.insert(".btn-filled-danger-colors:::color--white bg-color--20-83-57 border--20-75-50".to_owned());
+    let _ = selectors.insert(".btn-filled-danger-colors:hover, .btn-filled-danger-colors.hover, [open] > .btn-filled-danger-colors:::bg-color--20-94-43".to_owned());
+    let _ = selectors.insert(".btn-filled-danger-colors:focus, .btn-filled-danger-colors:focus-visible:::outline-color--20-69-57".to_owned());
+    let _ = selectors.insert(".btn-filled-danger-colors:active, .btn-filled-danger-colors.selected, .btn-filled-danger-colors[aria-selected=true]:::bg-color--20-63-47".to_owned());
+    let _ = selectors.insert(".btn-filled-danger-colors:disabled, .btn-filled-danger-colors.disabled, .btn-filled-danger-colors[aria-disabled=true]:::bg-color--28-37-65 border-color--20-37-65".to_owned());
 
     // ButtonKind::Outline
-    let _ = selectors.insert(".btn-outline:hover, [open] > .btn-outline:::color-white border-color-btn-outline-hover shadow-btn-outline-hover shadow-color-btn-outline-hover shadow-color-btn-outline-hover-inset".to_owned());
+    let _ = selectors.insert(".btn-outline:hover, [open] > .btn-outline:::color--white border-color-btn-outline-hover shadow-btn-outline-hover shadow-color-btn-outline-hover shadow-color-btn-outline-hover-inset".to_owned());
     let _ = selectors.insert(".btn-outline:hover .Counter, [open] > .btn-outline .Counter:::bg-color-btn-outline-hover-counter".to_owned());
-    let _ = selectors.insert(".btn-outline:hover .octicon, [open] > .btn-outline .octicon:::color-inherit".to_owned());
-    let _ = selectors.insert(".btn-outline:active, .btn-outline.selected, .btn-outline[aria-selected=true]:::color-white border-color-btn-outline-selected shadow-btn-outline-selected shadow-color-btn-outline-selected".to_owned());
+    let _ = selectors.insert(".btn-outline:hover .octicon, [open] > .btn-outline .octicon:::color--inherit".to_owned());
+    let _ = selectors.insert(".btn-outline:active, .btn-outline.selected, .btn-outline[aria-selected=true]:::color--white border-color-btn-outline-selected shadow-btn-outline-selected shadow-color-btn-outline-selected".to_owned());
     let _ = selectors.insert(".btn-outline:active:focus, .btn-outline.selected:focus, .btn-outline[aria-selected=true]:focus:::outline-2 outline-offset-2[-2px] outline shadow-btn-focus shadow-color-btn-focus".to_owned());
     let _ = selectors.insert(".btn-outline:active:focus:not(:focus-visible), .btn-outline.selected:focus:not(:focus-visible), .btn-outline[aria-selected=true]:focus:not(:focus-visible):::shadow-none outline-none".to_owned());
     let _ = selectors.insert(".btn-outline:active:focus-visible, .btn-outline.selected:focus-visible, .btn-outline[aria-selected=true]:focus-visible:::outline-2 outline-offset-2[-2px] outline shadow-btn-focus shadow-color-btn-focus".to_owned());
-    let _ = selectors.insert(".btn-outline:disabled, .btn-outline.disabled, .btn-outline[aria-disabled=true]:::color-btn-outline-disabled-text border-color-btn shadow-none".to_owned());
+    let _ = selectors.insert(".btn-outline:disabled, .btn-outline.disabled, .btn-outline[aria-disabled=true]:::color-btn-outline-disabled-text border-color-btn--213-25-12 shadow-none".to_owned());
     let _ = selectors.insert(".btn-outline:disabled .Counter, .btn-outline.disabled .Counter, .btn-outline[aria-disabled=true] .Counter:::bg-color-btn-outline-disabled-counter".to_owned());
-    let _ = selectors.insert(".btn-outline .Counter:::color-inherit bg-color-btn-outline-counter".to_owned());
+    let _ = selectors.insert(".btn-outline .Counter:::color--inherit bg-color-btn-outline-counter".to_owned());
 
     // ButtonColor::Outline Color Default
     let _ = selectors.insert(".btn-outline-colors:::color-btn-outline-text border-blue-600".to_owned());
@@ -86,14 +86,14 @@ pub(crate) fn get_button_default_selectors() -> HashSet<String> {
     let _ = selectors.insert(".btn-lg .octicon:::align-text-bottom".to_owned());
 
     // Button Icon Only
-    let _ = selectors.insert(".btn-octicon:::inline-block p-1 ml-1 leading-none color-white align-middle bg-color-transparent border-0 shadow-none".to_owned());
+    let _ = selectors.insert(".btn-octicon:::inline-block p-1 ml-1 leading-none color--white align-middle bg-color--transparent border-0 shadow-none".to_owned());
     let _ = selectors.insert(".btn-octicon:hover:::color-slate-300".to_owned());
     let _ = selectors.insert(".btn-octicon:focus, .btn-octicon:focus-visible:::rounded-md".to_owned());
     let _ = selectors.insert(".btn-octicon.disabled, .btn-octicon[aria-disabled=true]:::color-slate-100 cursor-default".to_owned());
     let _ = selectors.insert(".btn-octicon.disabled:hover, .btn-octicon[aria-disabled=true]:hover:::color-slate-100".to_owned());
 
     // Button Icon Close
-    let _ = selectors.insert(".close-button:::p-0 color-slate-50 bg-color-transparent border-0".to_owned());
+    let _ = selectors.insert(".close-button:::p-0 color-slate-50 bg-color--transparent border-0".to_owned());
     let _ = selectors.insert(".close-button:hover:::color-slate-300".to_owned());
     let _ = selectors.insert(".close-button:active:::outline-2 outline-offset-2[-2px] outline shadow-none".to_owned());
 
@@ -114,15 +114,13 @@ pub(crate) fn get_button_default_selectors() -> HashSet<String> {
     // Button Variaton Normal
     let _ = selectors.insert(".btn-normal:::inline-block border border-solid rounded-md".to_owned());
     let _ = selectors.insert(".btn-normal:hover:::no-underline".to_owned());
-    let _ = selectors.insert(".btn-normal:hover:::no-underline".to_owned());
 
     // Button Variaton Block
     let _ = selectors.insert(".btn-block:::block w-full text-center border border-solid rounded-md".to_owned());
     let _ = selectors.insert(".btn-block:hover:::no-underline".to_owned());
-    let _ = selectors.insert(".btn-block:hover:::no-underline".to_owned());
 
     // Button Variaton Link
-    let _ = selectors.insert(".btn-link:::inline-block rounded-md p-0 border-0 no-underline bg-color-transparent".to_owned());
+    let _ = selectors.insert(".btn-link:::inline-block rounded-md p-0 border-0 no-underline bg-color--transparent".to_owned());
     let _ = selectors.insert(".btn-link:hover:::underline".to_owned());
     let _ = selectors.insert(".btn-link:not(.dropdown-item):focus, .btn-link:not(.dropdown-item):focus-visible:::rounded-md outline-2 outline-offset-2[0] outline".to_owned());
 

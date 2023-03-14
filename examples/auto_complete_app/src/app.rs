@@ -11,72 +11,57 @@ use duid_ui::{
         typography::{
             text::{text_view, TextModel},
         },
-        inputs::selects::{
-            SelectMenuModel, SelectMenuMsg, select_menu_view
+        inputs::forms::{
+            AutoCompleteModel, AutoCompleteMsg, auto_complete_view
         },
     }
 };
 
-// Messages
-#[derive(Debug, PartialEq, Clone)]
-pub enum Messages {
-    NoAction
-}
 
 // Messages
 #[derive(Debug, PartialEq, Clone)]
 pub enum AppMsg {
-    SelectMenu(SelectMenuMsg<Messages>)
+    AutoCompleteMsg(AutoCompleteMsg)
 }
-
+/*
 impl From<SelectMenuMsg<Messages>> for AppMsg {
     fn from(value: SelectMenuMsg<Messages>) -> AppMsg {
         AppMsg::SelectMenu(value)
     }
 }
-
+*/
 #[derive(Debug, Clone, PartialEq)]
 pub struct AppModel {
-    select_menu: SelectMenuModel
+    auto_complete: AutoCompleteModel
 }
 
 
 impl AppModel {
     pub fn new() -> Self {
         AppModel {
-            select_menu: SelectMenuModel::new()
+            auto_complete: AutoCompleteModel::new()
         }
     }
 }
 
 pub fn app_view(app_model: &AppModel) -> Node<AppMsg> {
 
-    select_menu_view(
-        &app_model.select_menu,
-        None,
-        modal_children(),
-        None
-    ).map_msg(|m| AppMsg::SelectMenu(m))
+    auto_complete_view(
+        &app_model.auto_complete,
+    ).map_msg(|m| AppMsg::AutoCompleteMsg(m))
 }
 
 
 pub fn app_update(_model: &mut AppModel, msg: AppMsg) -> Cmd<AppMsg> {
-    match msg {
-        AppMsg::SelectMenu(select) => {
-            match select {
-                SelectMenuMsg::Button(_) => {
-                    Cmd::none()
-                },
-                _ => Cmd::none()
-            }
-        }
-    }
+    Cmd::none()
 }
 
 pub fn app_subscription(_model: &AppModel) -> Sub<AppMsg> {
     Sub::none()
 }
 
+
+/*
 fn modal_children() -> Node<Messages> {
     div(
         &[
@@ -110,3 +95,4 @@ fn modal_children() -> Node<Messages> {
         ]
     )
 }
+*/

@@ -25,7 +25,7 @@ impl AppModel {
         let mut text_model = TextModel::new();
         text_model.set_tag_span();
         text_model.add_classes(&["djed"]);
-        text_model.add_selectors(&[".djed:::color-green-400", ".djed:hover:::color-blue-400"]);
+        text_model.add_selectors(&[".djed:::color--90-100-75", ".djed:hover:::color--300-100-75"]);
         text_model.add_attributes(&[
             Attribute::new(None, "title", AttributeValue::from_value(Value::String("Bravo Djedou".to_owned()))),
         ]);
