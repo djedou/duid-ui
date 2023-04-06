@@ -4,7 +4,7 @@ use std::collections::HashSet;
 pub(crate) fn default_select_menu_selectors() -> HashSet<String> {
     let mut selectors = HashSet::with_capacity(0);
     
-    selectors.insert(".details-reset[open] > summary::before:::fixed inset-0 z-4 block cursor-default content-[\"&\"] bg-color-transparent".to_owned());
+    selectors.insert(".details-reset[open] > summary::before:::fixed inset-0 z-4 block cursor-inherit content-[\"&\"] bg-color-transparent".to_owned());
     selectors.insert(".details-reset > summary::before:::hidden".to_owned());
     selectors.insert(".select-menu-container:::relative inline-block".to_owned());
     selectors.insert(".select-menu-container-right-aligned:::float-right".to_owned());
