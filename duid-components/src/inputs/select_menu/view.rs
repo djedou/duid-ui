@@ -32,7 +32,7 @@ pub fn select_menu_view<M: Clone + 'static>(
         modal_children.push(foot.map_msg(|m| SelectMenuMsg::Msg(m)));
     }
     
-    let mut modal_classes = vec!["SelectMenu-modal".to_owned()];
+    let mut modal_classes = vec!["SelectMenu-modal".to_owned(), "SelectMenu-modal-custom".to_owned()];
 
     if select_menu_model.right_aligned {
         select_menu_classes.push("select-menu-container-right-aligned".to_string());
