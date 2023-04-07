@@ -21,5 +21,6 @@ exclude = [
     "examples/page_app",
     "examples/select_app",
     "examples/auto_complete_app",
-    "examples/inputs_app"
+    "examples/inputs_app",
+    "examples/modal_app"
 ]
