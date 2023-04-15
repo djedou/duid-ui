@@ -1,11 +1,7 @@
 use super::{ModalMsg, ModalModel};
-use crate::{
-    inputs::buttons::{ButtonMsg, button_view},
-    typography::text::text_view
-};
 use duid::{
         html::{
-            details, div,
+            details,
             attributes::{classes, selectors, open},
             nodes::Node
         },
@@ -14,6 +10,7 @@ use duid::{
 
 
 pub fn modal_view<M: Clone + 'static>(
+    button_view: Node<M>,
     modal_model: &ModalModel,
     content: Node<M>,
 ) -> Node<ModalMsg<M>> {
@@ -28,14 +25,7 @@ pub fn modal_view<M: Clone + 'static>(
             open(!modal_model.is_closed)
         ],
         &[
-            button_view(
-                &modal_model.button_model,
-                text_view(
-                    &modal_model.button_text_model, 
-                    &modal_model.button_text
-                ).map_msg(|_| ButtonMsg::NoAction),
-                None
-            ).map_msg(|m| ModalMsg::Button(m)),
+            button_view.map_msg(|m| ModalMsg::Msg(m)),
             content.map_msg(|m| ModalMsg::Msg(m))
         ]
     )

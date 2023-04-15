@@ -1,9 +1,9 @@
 use duid_ui::{
     duid::{
         html::{
-            div, button,
+            div, button, summary,
             nodes::Node,
-            attributes::classes,
+            attributes::{classes, r#type},
         },
         duid_events::{NodeMapMsg, Cmd, Sub}
     },
@@ -57,6 +57,14 @@ impl AppModel {
 pub fn app_view(app_model: &AppModel) -> Node<AppMsg> {
 
     modal_view(
+        summary(
+            &[
+                r#type("button".to_owned()),
+            ],
+            &[
+                text_view(&TextModel::new(), "Modal").map_msg(|_| Messages::NoAction),
+            ]
+        ),
         &app_model.modal,
         modal_children(),
     ).map_msg(|m| AppMsg::Modal(m))
@@ -67,9 +75,6 @@ pub fn app_update(_model: &mut AppModel, msg: AppMsg) -> Cmd<AppMsg> {
     match msg {
         AppMsg::Modal(select) => {
             match select {
-                ModalMsg::Button(_) => {
-                    Cmd::none()
-                },
                 _ => Cmd::none()
             }
         }

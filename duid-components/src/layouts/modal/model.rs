@@ -11,9 +11,6 @@ use crate::{
 pub struct ModalModel {
     pub(crate) selectors: HashSet<String>,
     pub(crate) classes: HashSet<String>,
-    pub button_model: ButtonModel,
-    pub button_text: String,
-    pub button_text_model: TextModel,
     pub(crate) is_closed: bool
 }
 
@@ -21,12 +18,6 @@ pub struct ModalModel {
 
 impl ModalModel {
     pub fn new() -> Self {
-        let mut button_model = ButtonModel::new();
-        button_model.set_size_sm();
-        button_model.set_kind_default();
-        button_model.set_colors_default();
-        button_model.set_variation_summary();
-
         let mut classes = HashSet::with_capacity(0);
         classes.insert("details-modal-reset-container details-modal-reset".to_owned());
         
@@ -34,9 +25,6 @@ impl ModalModel {
         ModalModel {
             selectors: default_modal_selectors(),
             classes,
-            button_model,
-            button_text: String::from("Modal"),
-            button_text_model: TextModel::new(),
             is_closed: true
         }
     }
@@ -63,10 +51,6 @@ impl ModalModel {
         selectors.iter().for_each(|c| {
             let _ = self.selectors.remove(c.as_ref());
         });
-    }
-
-    pub fn set_button_text(&mut self, button_text: impl AsRef<str>) {
-        self.button_text = button_text.as_ref().to_string();
     }
 
     pub fn closed(&mut self) {
