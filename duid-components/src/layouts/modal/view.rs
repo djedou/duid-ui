@@ -22,7 +22,7 @@ pub fn modal_view<M: Clone + 'static>(
         &[
             classes(&modal_classes),
             selectors(&modal_selectors),
-            open(!modal_model.is_closed)
+            open(modal_model.is_opened())
         ],
         &[
             button_view.map_msg(|m| ModalMsg::Msg(m)),
