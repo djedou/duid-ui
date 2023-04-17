@@ -322,7 +322,8 @@ fn build_attributes(button_model: &ButtonModel) -> Vec<Attribute<ButtonMsg>> {
                 let summary_class_vec: Vec<_> = summary_class.iter().collect();
                 button_attributes.extend([
                     classes(&summary_class_vec),
-                    Attribute::new(None, "aria-haspopup", AttributeValue::from_value(Value::Bool(true)))
+                    Attribute::new(None, "aria-haspopup", AttributeValue::from_value(Value::Bool(true))),
+                    events::on_click(|_| ButtonMsg::OnClick)
                 ]);
             }
         }
