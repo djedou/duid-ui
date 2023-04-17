@@ -6,7 +6,7 @@ use crate::{
 use duid::{
         html::{
             details, div,
-            attributes::{classes, selectors},
+            attributes::{classes, selectors, open},
             nodes::Node
         },
         duid_events::{NodeMapMsg}    
@@ -43,7 +43,8 @@ pub fn select_menu_view<M: Clone + 'static>(
     details(
         &[
             classes(&select_menu_classes),
-            selectors(&select_menu_selectors)
+            selectors(&select_menu_selectors),
+            open(select_menu_model.is_opened())
         ],
         &[
             button_view(
