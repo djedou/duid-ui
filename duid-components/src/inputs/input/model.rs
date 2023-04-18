@@ -1,10 +1,12 @@
-use super::{InputVariant, InputValidation, InputContext, InputValidationNote, Size, InputType};
+use super::{InputVariant, InputValidation, InputContext, InputValidationNote, Size, InputType, default_input_selectors};
 use std::rc::Rc;
 use std::cell::RefCell;
+use std::collections::{HashSet};
 
 /// Input Model
 #[derive(Debug, Clone, PartialEq)]
 pub struct InputModel {
+    pub(crate) selectors: HashSet<String>,
     pub(crate) input_classes: Vec<String>,
     pub(crate) label_classes: Vec<String>,
     /// If `true`, the input is disabled. Default false
@@ -34,6 +36,7 @@ pub struct InputModel {
 impl InputModel {
     pub fn new() -> Self {
         InputModel {
+            selectors: default_input_selectors(),
             input_classes: Vec::with_capacity(0),
             label_classes: Vec::with_capacity(0),
             disabled: false,
@@ -55,10 +58,23 @@ impl InputModel {
         }
     }
 
+    pub fn add_selectors(&mut self, selectors: &[impl AsRef<str>]) {
+        selectors.iter().for_each(|c| {
+            let _ = self.selectors.insert(c.as_ref().to_owned());
+        });
+    }
+
+    pub fn remove_selectors(&mut self, selectors: &[impl AsRef<str>]) {
+        selectors.iter().for_each(|c| {
+            let _ = self.selectors.remove(c.as_ref());
+        });
+    }
+
     pub fn extend_input_classes(&mut self, classes: &[String]) {
         self.input_classes.extend_from_slice(classes);
         self.input_classes.dedup();
     }
+
     pub fn extend_label_classes(&mut self, classes: &[String]) {
         self.label_classes.extend_from_slice(classes);
         self.label_classes.dedup();

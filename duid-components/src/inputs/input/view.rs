@@ -4,7 +4,7 @@ use super::{InputModel, InputVariant, InputContext, InputValidation, get_normal_
 use duid::{
         html::{
             div, input, p, label, span, 
-            attributes::{style, disabled, classes, Attribute, AttributeValue, Value},
+            attributes::{disabled, classes, Attribute, AttributeValue, Value, selectors},
             nodes::{Node, create_fragment}
         },
         duid_events::NodeMapMsg,
@@ -67,6 +67,7 @@ pub fn input_view(input_model: &InputModel) -> Node<()>
 fn default_view(input_model: &InputModel, input_classes: &[String]) -> Node<()> {
     
     let new_input_value = Rc::clone(&input_model.value);
+    let input_selectors: Vec<_> = input_model.selectors.iter().collect();
     let cb = Box::new({
         let new_input_value = Rc::clone(&new_input_value);
 
@@ -79,12 +80,12 @@ fn default_view(input_model: &InputModel, input_classes: &[String]) -> Node<()> 
         &[
             on_input(cb),
             classes(input_classes),
+            selectors(&input_selectors),
             Attribute::new(None, "type", AttributeValue::from_value(Value::String(input_model.type_.to_string()))),
             Attribute::new(None, "placeholder", AttributeValue::from_value(Value::String(input_model.placeholder.clone()))),
             Attribute::new(None, "aria-label", AttributeValue::from_value(Value::String(input_model.aria_label.clone()))),
             Attribute::new(None, "value", AttributeValue::from_value(Value::String(input_model.value.borrow().clone()))),
             disabled(input_model.disabled),
-            style("duid-forms-styles", String::with_capacity(0)),
         ],
         &[]
     )
@@ -93,6 +94,7 @@ fn default_view(input_model: &InputModel, input_classes: &[String]) -> Node<()> 
 fn normal_group_view(input_model: &InputModel, input_classes: &[String], label_classes: &[String], is_flat: bool) -> Node<()> {
 
     let new_classes = get_normal_group_style(&input_model.validation, is_flat);
+    let input_selectors: Vec<_> = input_model.selectors.iter().collect();
 
     let new_input_value = Rc::clone(&input_model.value);
     let cb = Box::new({
@@ -105,7 +107,8 @@ fn normal_group_view(input_model: &InputModel, input_classes: &[String], label_c
 
     div(
         &[
-            classes(&new_classes)
+            classes(&new_classes),
+            selectors(&input_selectors),
         ],
         &[
             div(
@@ -139,8 +142,7 @@ fn normal_group_view(input_model: &InputModel, input_classes: &[String], label_c
                             Attribute::new(None, "id", AttributeValue::from_value(Value::String(input_model.input_id.clone()))),
                             Attribute::new(None, "value", AttributeValue::from_value(Value::String(input_model.value.borrow().clone()))),
                             Attribute::new(None, "aria-describedby", AttributeValue::from_value(Value::String(format!("{}-validation", input_model.input_id.clone())))),
-                            disabled(input_model.disabled),
-                            style("duid-forms-styles", String::with_capacity(0)),
+                            disabled(input_model.disabled)
                         ],
                         &[]
                     )
@@ -154,6 +156,7 @@ fn normal_group_view(input_model: &InputModel, input_classes: &[String], label_c
 fn form_group_view(input_model: &InputModel, input_classes: &[String], label_classes: &[String]/*, is_flat: bool*/) -> Node<()> {
 
     let new_input_value = Rc::clone(&input_model.value);
+    let input_selectors: Vec<_> = input_model.selectors.iter().collect();
     let cb = Box::new({
         let new_input_value = Rc::clone(&new_input_value);
 
@@ -164,12 +167,13 @@ fn form_group_view(input_model: &InputModel, input_classes: &[String], label_cla
 
     div(
         &[
-        if input_model.full_width {
-            classes(&["FormControl".to_owned(), "FormControl--fullWidth".to_owned()])
-        }  
-        else {
-            classes(&["FormControl".to_owned()])
-        }
+            if input_model.full_width {
+                classes(&["FormControl".to_owned(), "FormControl--fullWidth".to_owned()])
+            }  
+            else {
+                classes(&["FormControl".to_owned()])
+            },
+            selectors(&input_selectors),
         ],
         &[
             label(
@@ -190,8 +194,7 @@ fn form_group_view(input_model: &InputModel, input_classes: &[String], label_cla
                     Attribute::new(None, "aria-label", AttributeValue::from_value(Value::String(input_model.aria_label.clone()))),
                     Attribute::new(None, "id", AttributeValue::from_value(Value::String(input_model.input_id.clone()))),
                     Attribute::new(None, "value", AttributeValue::from_value(Value::String(input_model.value.borrow().clone()))),
-                    disabled(input_model.disabled),
-                    style("duid-forms-styles", String::with_capacity(0)),
+                    disabled(input_model.disabled)
                 ],
                 &[]
             )
@@ -201,7 +204,9 @@ fn form_group_view(input_model: &InputModel, input_classes: &[String], label_cla
 
 pub fn input_add_on_appended_view(input_model: &InputModel, button: Node<ButtonMsg>) -> Node<InputButtonMsg> {
     
-    let mut new_input_classes = vec![ "form-control".to_owned() ];
+    let mut new_input_classes = vec![ "form-control".to_owned()];
+    let input_selectors: Vec<_> = input_model.selectors.iter().collect();
+
     get_normal_input_size_style(&input_model.size, &mut new_input_classes);
     new_input_classes.extend_from_slice(&input_model.input_classes);
 
@@ -221,7 +226,8 @@ pub fn input_add_on_appended_view(input_model: &InputModel, button: Node<ButtonM
             }
             else {
                 classes(&["input-group".to_owned()])
-            }
+            },
+            selectors(&input_selectors),
         ],
         &[
             input(
@@ -232,8 +238,7 @@ pub fn input_add_on_appended_view(input_model: &InputModel, button: Node<ButtonM
                     Attribute::new(None, "placeholder", AttributeValue::from_value(Value::String(input_model.placeholder.clone()))),
                     Attribute::new(None, "aria-label", AttributeValue::from_value(Value::String(input_model.aria_label.clone()))),
                     Attribute::new(None, "value", AttributeValue::from_value(Value::String(input_model.value.borrow().clone()))),
-                    disabled(input_model.disabled),
-                    style("duid-forms-styles", String::with_capacity(0)),
+                    disabled(input_model.disabled)
                 ],
                 &[]
             ).map_msg(move |input_msg| InputButtonMsg::InputMsg(input_msg)),
