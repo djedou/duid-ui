@@ -7,7 +7,7 @@ use super::default_modal_selectors;
 pub struct ModalModel {
     pub(crate) selectors: HashSet<String>,
     pub(crate) classes: HashSet<String>,
-    pub(crate) opened: bool
+    pub(crate) closed: bool
 }
 
 
@@ -21,7 +21,7 @@ impl ModalModel {
         ModalModel {
             selectors: default_modal_selectors(),
             classes,
-            opened: false
+            closed: true
         }
     }
 
@@ -49,11 +49,11 @@ impl ModalModel {
         });
     }
 
-    pub fn set_opened(&mut self, open: bool) {
-        self.opened = open;
+    pub fn set_closed(&mut self, open: bool) {
+        self.closed = open;
     }
     
-    pub fn is_opened(&self) -> bool {
-        self.opened
+    pub fn is_closed(&self) -> bool {
+        self.closed
     }
 }

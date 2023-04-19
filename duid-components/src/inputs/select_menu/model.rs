@@ -15,7 +15,7 @@ pub struct SelectMenuModel {
     pub button_text: String,
     pub button_text_model: TextModel,
     pub(crate) right_aligned: bool,
-    pub(crate) opened: bool
+    pub(crate) closed: bool
 }
 
 
@@ -39,7 +39,7 @@ impl SelectMenuModel {
             button_text: String::from("Select"),
             button_text_model: TextModel::new(),
             right_aligned: false,
-            opened: false
+            closed: true
         }
     }
 
@@ -79,11 +79,11 @@ impl SelectMenuModel {
         self.right_aligned
     }
 
-    pub fn set_opened(&mut self, open: bool) {
-        self.opened = open;
+    pub fn set_closed(&mut self, open: bool) {
+        self.closed = open;
     }
     
-    pub fn is_opened(&self) -> bool {
-        self.opened
+    pub fn is_closed(&self) -> bool {
+        self.closed
     }
 }

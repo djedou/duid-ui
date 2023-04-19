@@ -44,7 +44,7 @@ pub fn select_menu_view<M: Clone + 'static>(
         &[
             classes(&select_menu_classes),
             selectors(&select_menu_selectors),
-            open(select_menu_model.is_opened())
+            open(!select_menu_model.is_closed())
         ],
         &[
             button_view(
